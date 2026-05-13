@@ -52,7 +52,8 @@ jobs:
       - name: Vérification du déploiement
         run: |
           sleep 2
-          docker ps | grep labo0log430 || exit 1
+          docker inspect labo0log430 || exit 1
+          docker logs labo0log430
 
 
 
