@@ -41,6 +41,11 @@ jobs:
       - name: Build de l'image
         run: docker build -t calculatrice .
 
+      - name: Supprimer conteneur existant
+        run: |
+          docker stop test-container || true
+          docker rm test-container || true
+
       - name: Lancer le conteneur
         run: docker run -d -p 5000:5000 --name test-container calculatrice
 
