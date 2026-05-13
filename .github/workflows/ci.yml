@@ -43,16 +43,16 @@ jobs:
 
       - name: Supprimer conteneur existant
         run: |
-          docker stop test-container || true
-          docker rm test-container || true
+          docker stop labo0log430 || true
+          docker rm labo0log430 || true
 
       - name: Lancer le conteneur
-        run: docker run -d -p 5000:5000 --name test-container calculatrice
+        run: docker run -d -p 5000:5000 --name labo0log430 calculatrice
 
       - name: Vérification du déploiement
         run: |
           sleep 2
-          docker ps | grep test-container || exit 1
+          docker ps | grep labo0log430 || exit 1
 
 
 
