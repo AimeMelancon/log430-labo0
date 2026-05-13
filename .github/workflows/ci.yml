@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: self-hosted  #ubuntu-latest
+    runs-on: ubuntu-latest
     environment: Labo0
 
     steps:
@@ -30,4 +30,19 @@ jobs:
         env:
           PYTHONPATH: ${{ github.workspace }}/src
         run: | 
-          python -m pytest
+          python -m pytest 
+
+  second_build:
+    runs-on: self-hosted  
+    needs: build          
+    steps:
+      - name: Checkout dépot
+        uses: actions/checkout@v3
+      - name: déploiement de l'application
+        run: |
+          docker compose build
+          docker compose up -d
+          python src/calculator.py
+
+
+
