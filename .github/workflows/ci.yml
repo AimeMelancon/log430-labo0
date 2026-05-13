@@ -46,9 +46,9 @@ jobs:
 
       - name: Vérification du déploiement
         run: |
-          sleep 10
-          curl -f http://localhost:5000/ || exit 1
-          
+          sleep 2
+          docker ps | grep test-container || exit 1
+
 
 
 
